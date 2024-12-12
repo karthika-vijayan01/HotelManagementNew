@@ -46,11 +46,12 @@ namespace HotelManagementNew
                  options.JsonSerializerOptions.WriteIndented = true;
              });
 
-
+                         
             // Configure database context
             builder.Services.AddDbContext<HotelMgntDemoContext>(options =>
                 options.UseSqlServer(builder.Configuration.GetConnectionString("PropelAug2024Connection")));
 
+            builder.Services.AddScoped<IGuestRepository, GuestRepository>();
 
 
            // 1- connection string as middleware
