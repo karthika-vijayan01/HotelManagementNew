@@ -15,5 +15,6 @@ public partial class Room
 
     public bool IsAvailable { get; set; }
 
+    [System.Text.Json.Serialization.JsonIgnore]
     public virtual ICollection<Booking> Bookings { get; set; } = new List<Booking>();
 }

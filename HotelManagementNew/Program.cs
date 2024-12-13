@@ -1,4 +1,5 @@
 using HotelManagementNew.Models;
+using HotelManagementNew.Repository;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -50,12 +51,13 @@ namespace HotelManagementNew
             builder.Services.AddDbContext<HotelMgntDemoContext>(options =>
                 options.UseSqlServer(builder.Configuration.GetConnectionString("PropelAug2024Connection")));
 
-
-
            // 1- connection string as middleware
-            builder.Services.AddDbContext<HotelMgntDemoContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("PropelAug2024Connection")));
+            builder.Services.AddDbContext<HotelMgntDemoContext>(options => options.UseSqlServer
+            (builder.Configuration.GetConnectionString("PropelAug2024Connection")));
 
-        var app = builder.Build();
+
+            builder.Services.AddScoped<IBookingRepository, BookingRepository>();
+            var app = builder.Build();
 
             // Configure the HTTP request pipeline.
 
