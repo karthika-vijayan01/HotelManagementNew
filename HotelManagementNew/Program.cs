@@ -51,6 +51,14 @@ namespace HotelManagementNew
             builder.Services.AddDbContext<HotelMgntDemoContext>(options =>
                 options.UseSqlServer(builder.Configuration.GetConnectionString("PropelAug2024Connection")));
 
+
+           // 1- connection string as middleware
+            builder.Services.AddDbContext<HotelMgntDemoContext>(options => options.UseSqlServer
+            (builder.Configuration.GetConnectionString("PropelAug2024Connection")));
+
+
+            //builder.Services.AddScoped<IBookingRepository, BookingRepository>();
+
             builder.Services.AddScoped<IGuestRepository, GuestRepository>();
 
 
@@ -58,6 +66,7 @@ namespace HotelManagementNew
             builder.Services.AddDbContext<HotelMgntDemoContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("PropelAug2024Connection")));
             builder.Services.AddScoped<IServiceRepository, ServiceRepository>();
             builder.Services.AddScoped<IServiceRequestRepository, ServiceRequestRepository>();
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.

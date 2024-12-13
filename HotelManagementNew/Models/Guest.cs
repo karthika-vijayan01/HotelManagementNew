@@ -13,5 +13,6 @@ public partial class Guest
 
     public string AadhaarNumber { get; set; } = null!;
 
+    [System.Text.Json.Serialization.JsonIgnore]
     public virtual ICollection<Booking> Bookings { get; set; } = new List<Booking>();
 }
